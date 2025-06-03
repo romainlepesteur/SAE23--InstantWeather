@@ -10,19 +10,29 @@
     <div class="container">
         <h1>Instant Weather</h1>
         <div id="currentDate"></div> 
+
         <form id="weatherForm">
             <label for="postalCode">Code Postal :</label>
             <input type="text" id="postalCode" name="postalCode" required>
             <button type="submit">Rechercher</button>
         </form>
+
         <select id="citySelect" style="display:none;">
             <option value="">--Sélectionnez une ville--</option>
         </select>
+        <select id="daysSelect" style="display:none; margin-top:10px;">
+            <option value="1">Prévision 1 jour</option>
+            <option value="2">Prévision 2 jours</option>
+            <option value="3">Prévision 3 jours</option>
+            <option value="4">Prévision 4 jours</option>
+            <option value="5">Prévision 5 jours</option>
+            <option value="6">Prévision 6 jours</option>
+            <option value="7">Prévision 7 jours</option>
+        </select>
+
         <div id="weatherInfo"></div>
     </div>
     <script src="JAVA/recupinfoville.js"></script>
     <script src="JAVA/recupinfometeo.js"></script>
 </body>
 </html>
-
-
