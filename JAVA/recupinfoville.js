@@ -63,3 +63,4 @@ document.getElementById('daysSelect').addEventListener('change', function() {
         récupérerMétéo(codeVilleSélectionnée);
     }
 });
+

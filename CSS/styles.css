@@ -112,6 +112,56 @@ button:hover {
     font-size: 1.1em;
 }
 
+
+.weather-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.weather-card {
+    background: linear-gradient(135deg, #ffffffcc, #e0f7faee);
+    color: #0277bd;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    padding: 18px 22px 14px 22px;
+    min-width: 180px;
+    max-width: 220px;
+    flex: 1 1 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.13s;
+}
+
+.weather-card:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 8px 18px rgba(3, 155, 229, 0.13);
+}
+
+.weather-card h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.1em;
+    color: #0288d1;
+}
+
+.weather-details p {
+    margin: 5px 0;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.weather-details .label {
+    min-width: 120px;
+    font-weight: bold;
+    margin-right: 4px;
+    color: #039be5;
+}
+
+
 /* Responsive */
 @media (min-width: 426px) and (max-width: 768px) {
     .container {
