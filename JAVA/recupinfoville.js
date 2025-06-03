@@ -64,3 +64,12 @@ document.getElementById('daysSelect').addEventListener('change', function() {
     }
 });
 
+// Rafraîchir la météo si une option change
+document.querySelectorAll('#optionsSelect input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', function() {
+        const codeVilleSélectionnée = document.getElementById('citySelect').value;
+        if (codeVilleSélectionnée) {
+            récupérerMétéo(codeVilleSélectionnée);
+        }
+    });
+});
