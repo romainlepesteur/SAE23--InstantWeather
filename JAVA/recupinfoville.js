@@ -1,6 +1,4 @@
-// recupinfoville.js
-
-// Quand on soumet le formulaire, on empêche le rechargement et on récupère le code postal
+// Gestion de la soumission du formulaire pour récupérer les communes
 document.getElementById('weatherForm').addEventListener('submit', function(événement) {
     événement.preventDefault();
     const codePostal = document.getElementById('postalCode').value.trim();
@@ -31,13 +29,13 @@ function afficherCommunes(communes) {
     const sélecteurVille = document.getElementById('citySelect');
     const sélecteurJours = document.getElementById('daysSelect');
 
-    // On vide la liste avant d'ajouter les options
+    // Vide la liste avant d'ajouter les options
     sélecteurVille.innerHTML = '<option value="">--Sélectionnez une ville--</option>';
 
     if (communes.length > 0) {
         communes.forEach(commune => {
             const option = document.createElement('option');
-            option.value = commune.code;   // code INSEE
+            option.value = commune.code;
             option.textContent = commune.nom;
             sélecteurVille.appendChild(option);
         });
@@ -50,9 +48,17 @@ function afficherCommunes(communes) {
     }
 }
 
-// Dès qu'on change de ville, on appelle la fonction météo
+// On récupère la météo dès qu'une ville est sélectionnée
 document.getElementById('citySelect').addEventListener('change', function() {
     const codeVilleSélectionnée = this.value;
+    if (codeVilleSélectionnée) {
+        récupérerMétéo(codeVilleSélectionnée);
+    }
+});
+
+// On rafraîchit la météo si le nombre de jours change (optionnel, UX améliorée)
+document.getElementById('daysSelect').addEventListener('change', function() {
+    const codeVilleSélectionnée = document.getElementById('citySelect').value;
     if (codeVilleSélectionnée) {
         récupérerMétéo(codeVilleSélectionnée);
     }
