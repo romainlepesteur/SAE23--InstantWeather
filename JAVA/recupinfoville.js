@@ -1,4 +1,4 @@
-// Gestion de la soumission du formulaire pour récupérer les communes
+
 document.getElementById('weatherForm').addEventListener('submit', function(événement) {
     événement.preventDefault();
     const codePostal = document.getElementById('postalCode').value.trim();
@@ -29,7 +29,6 @@ function afficherCommunes(communes) {
     const sélecteurVille = document.getElementById('citySelect');
     const sélecteurJours = document.getElementById('daysSelect');
 
-    // Vide la liste avant d'ajouter les options
     sélecteurVille.innerHTML = '<option value="">--Sélectionnez une ville--</option>';
 
     if (communes.length > 0) {
@@ -48,7 +47,7 @@ function afficherCommunes(communes) {
     }
 }
 
-// On récupère la météo dès qu'une ville est sélectionnée
+
 document.getElementById('citySelect').addEventListener('change', function() {
     const codeVilleSélectionnée = this.value;
     if (codeVilleSélectionnée) {
@@ -56,7 +55,7 @@ document.getElementById('citySelect').addEventListener('change', function() {
     }
 });
 
-// On rafraîchit la météo si le nombre de jours change (optionnel, UX améliorée)
+
 document.getElementById('daysSelect').addEventListener('change', function() {
     const codeVilleSélectionnée = document.getElementById('citySelect').value;
     if (codeVilleSélectionnée) {
@@ -64,7 +63,7 @@ document.getElementById('daysSelect').addEventListener('change', function() {
     }
 });
 
-// Rafraîchir la météo si une option change
+
 document.querySelectorAll('#optionsSelect input[type="checkbox"]').forEach(cb => {
     cb.addEventListener('change', function() {
         const codeVilleSélectionnée = document.getElementById('citySelect').value;

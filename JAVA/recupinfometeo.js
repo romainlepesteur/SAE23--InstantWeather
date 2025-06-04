@@ -20,7 +20,7 @@ function afficherMétéo(données) {
     const aujourdHui = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-    // Cases à cocher
+
     const showLat = document.getElementById('optLat').checked;
     const showLon = document.getElementById('optLon').checked;
     const showRainProb = document.getElementById('optRainProb').checked;

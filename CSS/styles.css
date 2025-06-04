@@ -1,10 +1,9 @@
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
-    margin: 0;
-    padding: 0;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
     color: #333;
@@ -159,6 +158,34 @@ button:hover {
     font-weight: bold;
     margin-right: 4px;
     color: #039be5;
+}
+
+
+#optionsSelect {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 20px;
+    margin-bottom: 18px;
+}
+
+.option-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #e0f7fa;
+    margin: 0 12px 0 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.option-checkbox input[type="checkbox"] {
+    accent-color: #039be5;
+    margin-right: 7px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
 }
 
 
