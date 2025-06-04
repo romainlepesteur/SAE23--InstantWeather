@@ -53,3 +53,4 @@ function afficherMeteo(donnees) {
     html += `</div>`;
     infosMeteo.innerHTML = html;
 }
+

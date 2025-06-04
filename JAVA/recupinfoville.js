@@ -77,3 +77,5 @@ document.querySelectorAll('#optionsSelect input[type="checkbox"]').forEach(cb =>
 document.getElementById('basculerSombre').addEventListener('change', function() {
     document.body.classList.toggle('dark', this.checked);
 });
+
+
