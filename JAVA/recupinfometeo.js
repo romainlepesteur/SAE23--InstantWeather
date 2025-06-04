@@ -1,56 +1,55 @@
-function récupérerMétéo(codeCommune) {
-    const cléAPI = '0eade8e30618633d6cba79a970df3ff40cec620e51c99caa28e592026b3fcf33';
-    fetch(`https://api.meteo-concept.com/api/forecast/daily?insee=${codeCommune}&token=${cléAPI}`)
-        .then(réponse => {
-            if (!réponse.ok) {
+function recupererMeteo(codeCommune) {
+    const cleAPI = '0eade8e30618633d6cba79a970df3ff40cec620e51c99caa28e592026b3fcf33';
+    fetch(`https://api.meteo-concept.com/api/forecast/daily?insee=${codeCommune}&token=${cleAPI}`)
+        .then(reponse => {
+            if (!reponse.ok) {
                 throw new Error('Erreur réseau ou serveur');
             }
-            return réponse.json();
+            return reponse.json();
         })
-        .then(données => afficherMétéo(données))
+        .then(donnees => afficherMeteo(donnees))
         .catch(erreur => {
             console.error('Erreur lors de la récupération des données météo :', erreur);
-            document.getElementById('weatherInfo').textContent = 'Erreur lors de la récupération des données météo.';
+            document.getElementById('infosMeteo').textContent = 'Erreur lors de la récupération des données météo.';
         });
 }
 
-function afficherMétéo(données) {
-    const infoMétéo = document.getElementById('weatherInfo');
-    const joursDemandés = parseInt(document.getElementById('daysSelect').value) || 1;
+function afficherMeteo(donnees) {
+    const infosMeteo = document.getElementById('infosMeteo');
+    const joursDemandes = parseInt(document.getElementById('selectJours').value) || 1;
     const aujourdHui = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 
-    const showLat = document.getElementById('optLat').checked;
-    const showLon = document.getElementById('optLon').checked;
-    const showRainProb = document.getElementById('optRainProb').checked;
-    const showWind = document.getElementById('optWind').checked;
-    const showGust = document.getElementById('optGust').checked;
-    const showRainSum = document.getElementById('optRainSum').checked;
+    const afficherLatitude = document.getElementById('optLatitude').checked;
+    const afficherLongitude = document.getElementById('optLongitude').checked;
+    const afficherProbabilitePluie = document.getElementById('optProbabilitePluie').checked;
+    const afficherVitesseVent = document.getElementById('optVitesseVent').checked;
+    const afficherRafaleVent = document.getElementById('optRafaleVent').checked;
+    const afficherCumulPluie = document.getElementById('optCumulPluie').checked;
 
-    let html = `<h2>Météo pour ${données.city.name}</h2>`;
+    let html = `<h2>Météo pour ${donnees.city.name}</h2>`;
     html += `<div class="weather-cards">`;
 
-    données.forecast.slice(0, joursDemandés).forEach((prévision, index) => {
+    donnees.forecast.slice(0, joursDemandes).forEach((prevision, index) => {
         const dateDuJour = new Date(aujourdHui);
         dateDuJour.setDate(aujourdHui.getDate() + index);
-        const dateFormatée = dateDuJour.toLocaleDateString('fr-FR', options);
+        const dateFormatee = dateDuJour.toLocaleDateString('fr-FR', options);
 
         html += `<div class="weather-card">
-                <h3>${dateFormatée}</h3>
+                <h3>${dateFormatee}</h3>
                 <div class="weather-details">`;
 
-        if (showLat)      html += `<p><span class="label">Latitude :</span> ${données.city.latitude}</p>`;
-        if (showLon)      html += `<p><span class="label">Longitude :</span> ${données.city.longitude}</p>`;
-        if (showRainProb) html += `<p><span class="label">Prob. de pluie :</span> ${prévision.probarain}%</p>`;
-        if (showWind)     html += `<p><span class="label">Vent moyen :</span> ${prévision.wind10m} km/h</p>`;
-        if (showGust)     html += `<p><span class="label">Rafale max :</span> ${prévision.gust10m} km/h</p>`;
-        if (showRainSum)  html += `<p><span class="label">Cumul de pluie :</span> ${prévision.rr10} mm</p>`;
+        if (afficherLatitude)       html += `<p><span class="label">Latitude :</span> ${donnees.city.latitude}</p>`;
+        if (afficherLongitude)      html += `<p><span class="label">Longitude :</span> ${donnees.city.longitude}</p>`;
+        if (afficherProbabilitePluie) html += `<p><span class="label">Probabilité de pluie :</span> ${prevision.probarain}%</p>`;
+        if (afficherVitesseVent)    html += `<p><span class="label">Vitesse du vent :</span> ${prevision.wind10m} km/h</p>`;
+        if (afficherRafaleVent)     html += `<p><span class="label">Rafale de vent :</span> ${prevision.gust10m} km/h</p>`;
+        if (afficherCumulPluie)     html += `<p><span class="label">Cumul de pluie :</span> ${prevision.rr10} mm</p>`;
 
         html += `</div></div>`;
     });
 
     html += `</div>`;
-    infoMétéo.innerHTML = html;
+    infosMeteo.innerHTML = html;
 }
-

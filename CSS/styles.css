@@ -1,11 +1,8 @@
 body {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100vh;
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+    margin: 0;
+    padding: 0;
     color: #333;
 }
 
@@ -18,6 +15,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 500px;
+    margin: 40px auto 40px auto;
 }
 
 form {
@@ -25,13 +23,12 @@ form {
 }
 
 label {
-    display: block;
     margin-bottom: 5px;
     color: #e0f7fa;
     font-weight: bold;
 }
 
-input {
+input[type="text"] {
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
@@ -43,9 +40,8 @@ input {
     color: #333;
 }
 
-/* Styles unifiés pour les <select> */
-#citySelect,
-#daysSelect {
+#selectVille,
+#selectJours {
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
@@ -58,17 +54,13 @@ input {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5" fill="%23333"><path d="M2 0L0 2h4L2 0zM2 5L0 3h4L2 5z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 10px 10px;
     cursor: pointer;
 }
 
-#citySelect { margin-top: 20px; }
+#selectVille { margin-top: 20px; }
 
-#citySelect:focus,
-#daysSelect:focus {
+#selectVille:focus,
+#selectJours:focus {
     outline: none;
     border-color: #039be5;
     box-shadow: 0 0 5px rgba(3, 155, 229, 0.5);
@@ -89,28 +81,17 @@ button:hover {
     background: linear-gradient(135deg, #0288d1, #039be5);
 }
 
-/* Style spécifique pour le bouton "Rechercher" */
-#weatherForm button[type="submit"] {
-    background: linear-gradient(135deg, #976b6b, #4c9b50);
-    color: #fff;
-}
-
-#weatherForm button[type="submit"]:hover {
-    background: linear-gradient(135deg, #4c9b50, #976b6b);
-}
-
-#currentDate {
+#dateActuelle {
     margin-bottom: 20px;
     font-size: 1.2em;
     color: #e0f7fa;
     font-style: italic;
 }
 
-#weatherInfo {
+#infosMeteo {
     margin-top: 20px;
     font-size: 1.1em;
 }
-
 
 .weather-cards {
     display: flex;
@@ -160,7 +141,6 @@ button:hover {
     color: #039be5;
 }
 
-
 #optionsSelect {
     display: flex;
     flex-wrap: wrap;
@@ -188,6 +168,48 @@ button:hover {
     cursor: pointer;
 }
 
+/* MODE SOMBRE */
+body.dark {
+    background: linear-gradient(135deg, #161c23, #314155);
+    color: #f2f2f2;
+}
+
+body.dark .container {
+    background: linear-gradient(135deg, #232d3b, #354c61);
+    color: #f2f2f2;
+    box-shadow: 0 4px 18px rgba(20, 24, 36, 0.28);
+}
+
+body.dark input,
+body.dark select {
+    background-color: #232d3b;
+    color: #e0f7fa;
+    border-color: #314155;
+}
+
+body.dark #selectVille,
+body.dark #selectJours {
+    background-color: #293d52;
+    color: #e0f7fa;
+}
+
+body.dark .option-checkbox {
+    color: #e0f7fa;
+}
+
+body.dark .weather-card {
+    background: linear-gradient(135deg, #2b3440cc, #36495aee);
+    color: #e0f7fa;
+    box-shadow: 0 4px 16px rgba(30,50,80,0.10);
+}
+
+body.dark .weather-card h3 {
+    color: #62d6ff;
+}
+
+body.dark .weather-details .label {
+    color: #67b7fa;
+}
 
 /* Responsive */
 @media (min-width: 426px) and (max-width: 768px) {
@@ -195,7 +217,7 @@ button:hover {
         width: 90%;
         padding: 20px;
     }
-    input, #citySelect, #daysSelect {
+    input, #selectVille, #selectJours {
         font-size: 1em;
     }
     button {
@@ -209,7 +231,7 @@ button:hover {
         width: 80%;
         padding: 25px;
     }
-    input, #citySelect, #daysSelect {
+    input, #selectVille, #selectJours {
         font-size: 1.1em;
     }
     button {
@@ -224,7 +246,7 @@ button:hover {
         max-width: 600px;
         padding: 30px;
     }
-    input, #citySelect, #daysSelect {
+    input, #selectVille, #selectJours {
         font-size: 1.2em;
     }
     button {

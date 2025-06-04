@@ -1,24 +1,24 @@
 
-document.getElementById('weatherForm').addEventListener('submit', function(événement) {
-    événement.preventDefault();
-    const codePostal = document.getElementById('postalCode').value.trim();
+document.getElementById('formulaireMeteo').addEventListener('submit', function(evenement) {
+    evenement.preventDefault();
+    const codePostal = document.getElementById('codePostal').value.trim();
     const motifCodePostal = /^\d{5}$/;
     if (!motifCodePostal.test(codePostal)) {
         alert('Veuillez entrer un code postal valide de 5 chiffres.');
         return;
     }
-    récupérerCommunes(codePostal);
+    recupererCommunes(codePostal);
 });
 
-function récupérerCommunes(codePostal) {
+function recupererCommunes(codePostal) {
     fetch(`https://geo.api.gouv.fr/communes?codePostal=${codePostal}`)
-        .then(réponse => {
-            if (!réponse.ok) {
+        .then(reponse => {
+            if (!reponse.ok) {
                 throw new Error('Erreur réseau ou serveur');
             }
-            return réponse.json();
+            return reponse.json();
         })
-        .then(données => afficherCommunes(données))
+        .then(donnees => afficherCommunes(donnees))
         .catch(erreur => {
             console.error('Erreur lors de la récupération des communes :', erreur);
             alert('Impossible de récupérer les communes. Vérifiez votre connexion.');
@@ -26,49 +26,54 @@ function récupérerCommunes(codePostal) {
 }
 
 function afficherCommunes(communes) {
-    const sélecteurVille = document.getElementById('citySelect');
-    const sélecteurJours = document.getElementById('daysSelect');
+    const selectVille = document.getElementById('selectVille');
+    const selectJours = document.getElementById('selectJours');
 
-    sélecteurVille.innerHTML = '<option value="">--Sélectionnez une ville--</option>';
+    selectVille.innerHTML = '<option value="">--Sélectionnez une ville--</option>';
 
     if (communes.length > 0) {
         communes.forEach(commune => {
             const option = document.createElement('option');
             option.value = commune.code;
             option.textContent = commune.nom;
-            sélecteurVille.appendChild(option);
+            selectVille.appendChild(option);
         });
-        sélecteurVille.style.display = 'block';
-        sélecteurJours.style.display = 'block';
+        selectVille.style.display = 'block';
+        selectJours.style.display = 'block';
     } else {
         alert('Aucune commune trouvée pour ce code postal.');
-        sélecteurVille.style.display = 'none';
-        sélecteurJours.style.display = 'none';
+        selectVille.style.display = 'none';
+        selectJours.style.display = 'none';
     }
 }
 
 
-document.getElementById('citySelect').addEventListener('change', function() {
-    const codeVilleSélectionnée = this.value;
-    if (codeVilleSélectionnée) {
-        récupérerMétéo(codeVilleSélectionnée);
+document.getElementById('selectVille').addEventListener('change', function() {
+    const codeVilleSelectionnee = this.value;
+    if (codeVilleSelectionnee) {
+        recupererMeteo(codeVilleSelectionnee);
     }
 });
 
 
-document.getElementById('daysSelect').addEventListener('change', function() {
-    const codeVilleSélectionnée = document.getElementById('citySelect').value;
-    if (codeVilleSélectionnée) {
-        récupérerMétéo(codeVilleSélectionnée);
+document.getElementById('selectJours').addEventListener('change', function() {
+    const codeVilleSelectionnee = document.getElementById('selectVille').value;
+    if (codeVilleSelectionnee) {
+        recupererMeteo(codeVilleSelectionnee);
     }
 });
 
 
 document.querySelectorAll('#optionsSelect input[type="checkbox"]').forEach(cb => {
     cb.addEventListener('change', function() {
-        const codeVilleSélectionnée = document.getElementById('citySelect').value;
-        if (codeVilleSélectionnée) {
-            récupérerMétéo(codeVilleSélectionnée);
+        const codeVilleSelectionnee = document.getElementById('selectVille').value;
+        if (codeVilleSelectionnee) {
+            recupererMeteo(codeVilleSelectionnee);
         }
     });
+});
+
+
+document.getElementById('basculerSombre').addEventListener('change', function() {
+    document.body.classList.toggle('dark', this.checked);
 });

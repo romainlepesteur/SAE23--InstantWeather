@@ -3,33 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Weather</title>
+    <title>Météo Instantanée</title>
     <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Instant Weather</h1>
-        <div id="currentDate"></div> 
+        <h1>intatWEATHER</h1>
+        <div id="dateActuelle"></div> 
 
-        <form id="weatherForm">
-            <label for="postalCode">Code Postal :</label>
-            <input type="text" id="postalCode" name="postalCode" required>
+        <form id="formulaireMeteo">
+            <label for="codePostal">Code Postal :</label>
+            <input type="text" id="codePostal" name="codePostal" required>
             <button type="submit">Rechercher</button>
         </form>
-        <div id="optionsSelect">
-            <label class="option-checkbox"><input type="checkbox" id="optLat" checked> Latitude</label>
-            <label class="option-checkbox"><input type="checkbox" id="optLon" checked> Longitude</label>
-            <label class="option-checkbox"><input type="checkbox" id="optRainProb" checked> Probabilité de pluie</label>
-            <label class="option-checkbox"><input type="checkbox" id="optWind" checked> Vitesse du vent</label>
-            <label class="option-checkbox"><input type="checkbox" id="optGust" checked> Rafale de vent</label>
-            <label class="option-checkbox"><input type="checkbox" id="optRainSum" checked> Cumul de pluie</label>
+
+        <div id="themeSwitch" style="display:flex;align-items:center;justify-content:center;margin:10px 0;">
+            <label for="basculerSombre" style="color:#e0f7fa; font-weight:bold; cursor:pointer;">
+                <input type="checkbox" id="basculerSombre" style="accent-color:#0288d1; margin-right:7px;vertical-align:middle;">
+                Mode sombre
+            </label>
         </div>
 
+        <div id="optionsSelect" style="margin-top:10px;">
+            <label class="option-checkbox"><input type="checkbox" id="optLatitude" checked> Latitude</label>
+            <label class="option-checkbox"><input type="checkbox" id="optLongitude" checked> Longitude</label>
+            <label class="option-checkbox"><input type="checkbox" id="optProbabilitePluie" checked> Probabilité de pluie</label>
+            <label class="option-checkbox"><input type="checkbox" id="optVitesseVent" checked> Vitesse du vent</label>
+            <label class="option-checkbox"><input type="checkbox" id="optRafaleVent" checked> Rafale de vent</label>
+            <label class="option-checkbox"><input type="checkbox" id="optCumulPluie" checked> Cumul de pluie</label>
+        </div>
 
-        <select id="citySelect" style="display:none;">
+        <select id="selectVille" style="display:none;">
             <option value="">--Sélectionnez une ville--</option>
         </select>
-        <select id="daysSelect" style="display:none;">
+        <select id="selectJours" style="display:none;">
             <option value="1">Prévision 1 jour</option>
             <option value="2">Prévision 2 jours</option>
             <option value="3">Prévision 3 jours</option>
@@ -39,11 +46,9 @@
             <option value="7">Prévision 7 jours</option>
         </select>
 
-        <div id="weatherInfo"></div>
+        <div id="infosMeteo"></div>
     </div>
-<script src="JAVA/recupinfometeo.js"></script>
-<script src="JAVA/recupinfoville.js"></script>
-
-
+    <script src="JAVA/recupinfometeo.js"></script>
+    <script src="JAVA/recupinfoville.js"></script>
 </body>
 </html>
