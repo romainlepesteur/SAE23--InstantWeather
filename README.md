@@ -1,27 +1,51 @@
-# 🌦️ Projet de groupe "Instant Weather"
+🌦️ Instant Weather V2
+Présentation
+Instant Weather V2 marque l’évolution du projet initial réalisé lors des TD. Cette nouvelle version s’appuie sur le code et la charte graphique de la V1, tout en y ajoutant des fonctionnalités avancées pour enrichir l’expérience utilisateur, dans le respect des standards de développement web (accessibilité, responsive, qualité de code).
 
-## 📝 Description
+Objectifs
+S’approprier l’utilisation d’API et leur intégration dans un projet web.
 
-**Instant Weather** est un projet à réaliser en groupe lors des TD. L'objectif est de créer une page Web permettant aux utilisateurs d'afficher des informations météorologiques pour la commune de leur choix via un formulaire. Pour mener ce projet à bien, nous avons dû utiliser 2 API (API de découpage administratif par commune et API météo de MétéoConcept).
+Manipuler le DOM de manière dynamique et structurée.
 
-## 🛠️ Outils Techniques
+Améliorer l’interaction avec la page via JavaScript.
 
-- **Langages** : 💻 JavaScript, 📄 HTML, 🎨 CSS, 🤖 Markdown
-- **Outil de développement** : 🔧 Visual Studio Code
-- **Accéder au Projet** : 📝 [Instant Weather](https://logoviktor.github.io/R209---InstantWeather/)
+Proposer une interface moderne, adaptée à tous les supports et conforme aux normes d’accessibilité.
 
-## 🎯 Objectifs du projet
+Fonctionnalités de la V2
+Sélection du nombre de jours :
+L’utilisateur peut désormais choisir la durée de la prévision météo (de 1 à 7 jours), grâce à une interface dédiée (slider, boutons…).
 
-- Utiliser une API conformément à sa documentation.
-- Manipuler le DOM pour intégrer dynamiquement du contenu dans une page HTML.
-- Interagir avec la mise en forme de la page Web via l’utilisation de JavaScript.
-- La page sera responsive et conforme aux validateurs HTML et CSS du W3C.
+Affichage d’informations supplémentaires :
+Possibilité d’afficher, en plus des prévisions classiques, des données complémentaires :
 
-## 🏠 Fonctionnalités de la version de base (V1)
+Latitude/longitude de la commune
 
-L’utilisateur pourra, grâce au formulaire, saisir un code postal puis choisir la commune concernée afin de récupérer les informations météorologiques suivantes :
+Cumul de pluie
 
-- 🧊 La température minimale
-- 🌡️ La température maximale
-- 🌧️ La probabilité de pluie
-- ☀️ Le nombre d’heures d’ensoleillement
+Vent moyen et direction du vent
+
+Présentation des résultats sous forme de cartes :
+Les données météo s’affichent de manière claire et structurée, pour une meilleure lisibilité.
+
+Fonctionnalité additionnelle personnalisée (dark mode)
+
+Technologies utilisées
+JavaScript
+
+HTML5
+
+CSS3
+
+Développement sur Visual Studio Code
+
+Accès au projet
+Dépôt GitHub : https://romainlepesteur.github.io/SAE23--InstantWeather/
+
+Particularités de cette version
+Cette V2 a été pensée comme une évolution du projet initial, avec une priorité donnée à :
+
+L’organisation du code (clarté, modularité, maintenabilité)
+
+L’intégration soignée de chaque nouvelle fonctionnalité, pour garantir cohérence et ergonomie
+
+La conformité aux standards de développement (W3C, accessibilité, responsive)
